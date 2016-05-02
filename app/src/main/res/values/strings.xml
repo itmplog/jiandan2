@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">jiandan2</string>
+    <string name="jiandan2_content">煎了个蛋</string>
+    <string name="leak_canary_display_activity_label">JianDanLeaks</string>
+</resources>

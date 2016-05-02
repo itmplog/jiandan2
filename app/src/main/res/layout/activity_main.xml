@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<top.itmp.jiandan2.views.PagerEnabledSlidingPaneLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sliding_pane_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MainActivity">
+    <!-- android:clipToPadding="true"
+    android:fitsSystemWindows="true" -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="74dp"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="74dp"
+            android:layout_gravity="bottom"
+            android:background="@color/colorPrimary" />
+
+        <ListView
+            android:id="@+id/left_pane"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#eeeeeeee" />
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.view.PagerTitleStrip
+            android:id="@+id/titles"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="bottom"
+            android:background="?attr/colorPrimary" />
+
+    </android.support.v4.view.ViewPager>
+</top.itmp.jiandan2.views.PagerEnabledSlidingPaneLayout>
