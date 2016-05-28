@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import top.itmp.jiandan2.R;
 import top.itmp.jiandan2.base.BaseActivity;
 import top.itmp.jiandan2.utils.Dummy;
@@ -25,24 +27,23 @@ import top.itmp.jiandan2.views.PagerEnabledSlidingPaneLayout;
 
 public class MainActivity extends BaseActivity {
 
-    private PagerEnabledSlidingPaneLayout mPagerEnabledSlidingPaneLayout;
-    private ListView mListView;
-    private ViewPager mViewPager;
-    private PagerTitleStrip mPagerTitleStrip;
+    @BindView(R.id.sliding_pane_layout)
+    PagerEnabledSlidingPaneLayout mPagerEnabledSlidingPaneLayout;
+    @BindView(R.id.left_pane)
+    ListView mListView;
+    @BindView(R.id.pager)
+    ViewPager mViewPager;
+    @BindView(R.id.titles)
+    PagerTitleStrip mPagerTitleStrip;
+
     private long exitTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mPagerEnabledSlidingPaneLayout = (PagerEnabledSlidingPaneLayout) findViewById(R.id.sliding_pane_layout);
-        mListView = (ListView) findViewById(R.id.left_pane);
-        //mFrameLayout = (FrameLayout)findViewById(R.id.context);
-        mViewPager = (ViewPager) findViewById(R.id.pager);
-        mPagerTitleStrip = (PagerTitleStrip) findViewById(R.id.titles);
-
-        mPagerEnabledSlidingPaneLayout.setSliderFadeColor(ContextCompat.getColor(this, R.color.translucent));
+        initView();
+        initData();
 
         mListView.setAdapter(new SimpleAdapter(this, Dummy.dummyListMap("dummy"), android.R.layout.simple_list_item_1,
                 new String[]{"dummy"}, new int[]{android.R.id.text1}));
@@ -62,6 +63,24 @@ public class MainActivity extends BaseActivity {
         colorPagerAdapter.add("Cyan", Color.CYAN);
         colorPagerAdapter.add("Magenta", Color.MAGENTA);
         mViewPager.setAdapter(colorPagerAdapter);
+    }
+
+    @Override
+    public void initView() {
+        ButterKnife.bind(this);
+
+        //mPagerEnabledSlidingPaneLayout = (PagerEnabledSlidingPaneLayout) findViewById(R.id.sliding_pane_layout);
+        //mListView = (ListView) findViewById(R.id.left_pane);
+        //mFrameLayout = (FrameLayout)findViewById(R.id.context);
+        //mViewPager = (ViewPager) findViewById(R.id.pager);
+        //mPagerTitleStrip = (PagerTitleStrip) findViewById(R.id.titles);
+
+        mPagerEnabledSlidingPaneLayout.setSliderFadeColor(ContextCompat.getColor(this, R.color.translucent));
+    }
+
+    @Override
+    public void initData() {
+
     }
 
     @Override
