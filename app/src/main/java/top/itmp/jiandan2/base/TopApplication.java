@@ -11,6 +11,7 @@ import com.squareup.leakcanary.RefWatcher;
 import top.itmp.greendao.DaoMaster;
 import top.itmp.greendao.DaoSession;
 import top.itmp.jiandan2.cache.BaseCache;
+import top.itmp.jiandan2.utils.ImageLoadProxy;
 import top.itmp.jiandan2.utils.StrictModeUtil;
 
 /**
@@ -30,6 +31,7 @@ public class TopApplication extends Application {
         super.onCreate();
 
         mContext = this;
+        ImageLoadProxy.initImageLoader(this);
 
         mRefWatcher = LeakCanary.install(this);
     }
