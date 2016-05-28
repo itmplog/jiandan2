@@ -2,6 +2,9 @@ package top.itmp.jiandan2.base;
 
 import android.app.Application;
 import android.content.Context;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -19,6 +22,7 @@ public class TopApplication extends Application {
 
     private static DaoMaster mDaoMaster;
     private static DaoSession mDaoSession;
+    private static RequestQueue mRequestQueue;
 
     @Override
     public void onCreate() {
@@ -55,5 +59,12 @@ public class TopApplication extends Application {
             mDaoSession = mDaoMaster.newSession();
         }
         return mDaoSession;
+    }
+
+    public static RequestQueue getRequestQueue(){
+        if(mRequestQueue == null){
+            mRequestQueue = Volley.newRequestQueue(mContext);
+        }
+        return mRequestQueue;
     }
 }
