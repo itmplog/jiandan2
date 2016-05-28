@@ -2,12 +2,13 @@ package top.itmp.jiandan2.base;
 
 import android.app.Application;
 import android.content.Context;
-
-import com.squareup.leakcanary.AndroidExcludedRefs;
-import com.squareup.leakcanary.DisplayLeakService;
-import com.squareup.leakcanary.ExcludedRefs;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+
+import top.itmp.greendao.DaoMaster;
+import top.itmp.greendao.DaoSession;
+import top.itmp.jiandan2.cache.BaseCache;
+import top.itmp.jiandan2.utils.StrictModeUtil;
 
 /**
  * Created by hz on 2016/4/5.
@@ -16,7 +17,20 @@ public class TopApplication extends Application {
     private static Context mContext;
     private RefWatcher mRefWatcher;
 
-    public static Context getContext() {
+    private static DaoMaster mDaoMaster;
+    private static DaoSession mDaoSession;
+
+    @Override
+    public void onCreate() {
+        StrictModeUtil.init(); //StrictMode 线程监控， VM监控
+        super.onCreate();
+
+        mContext = this;
+
+        mRefWatcher = LeakCanary.install(this);
+    }
+
+    public static Context getContext(){
         return mContext;
     }
 
@@ -25,20 +39,21 @@ public class TopApplication extends Application {
         return application.mRefWatcher;
     }
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        mContext = this;
-
-        ExcludedRefs excludedRefs = AndroidExcludedRefs.createAppDefaults()
-                //.instanceField("android.support.v7.widget.RecyclerView", "mContext")
-                // inv
-                .staticField("android.view.inputmethod.InputMethodManager", "sInstance")
-                .instanceField("android.support.v7.widget.RecyclerView", "mContext")
-                .instanceField("top.itmp.uidemo.ui.MainActivity", "instance")
-                .reason("recyclerView leak")
-                .build();
-        mRefWatcher = LeakCanary.install(this, DisplayLeakService.class, excludedRefs);
+    public static DaoMaster getDaoMaster(){
+        if(mDaoMaster == null){
+            DaoMaster.OpenHelper helper = new DaoMaster.DevOpenHelper(mContext, BaseCache.DB_NAME, null);
+            mDaoMaster = new DaoMaster(helper.getWritableDatabase());
+        }
+        return mDaoMaster;
     }
 
+    public static DaoSession getDaoSession(){
+        if(mDaoSession == null){
+            if(mDaoMaster == null){
+                mDaoMaster = getDaoMaster();
+            }
+            mDaoSession = mDaoMaster.newSession();
+        }
+        return mDaoSession;
+    }
 }
