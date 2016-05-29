@@ -18,7 +18,7 @@ import top.itmp.jiandan2.R;
 public class FullscreenActivity extends AppCompatActivity {
 
     @BindView(R.id.fullscreen_content)
-    private View mContentView;
+    View mContentView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
