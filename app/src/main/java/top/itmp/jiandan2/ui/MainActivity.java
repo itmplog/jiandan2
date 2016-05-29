@@ -1,11 +1,8 @@
 package top.itmp.jiandan2.ui;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.PagerTitleStrip;
-import android.support.v4.view.ViewPager;
 import android.util.Pair;
 import android.view.KeyEvent;
 import android.view.View;
@@ -19,6 +16,7 @@ import butterknife.ButterKnife;
 import top.itmp.jiandan2.R;
 import top.itmp.jiandan2.base.BaseActivity;
 import top.itmp.jiandan2.model.MenuItem;
+import top.itmp.jiandan2.ui.fragment.FreshNewsFragment;
 import top.itmp.jiandan2.ui.fragment.MainMenuFragment;
 import top.itmp.jiandan2.views.PagerEnabledSlidingPaneLayout;
 
@@ -26,8 +24,6 @@ public class MainActivity extends BaseActivity {
 
     @BindView(R.id.sliding_pane_layout)
     PagerEnabledSlidingPaneLayout mPagerEnabledSlidingPaneLayout;
-    @BindView(R.id.pager)
-    ViewPager mViewPager;
 
     private long exitTime;
 
@@ -53,6 +49,7 @@ public class MainActivity extends BaseActivity {
         mPagerEnabledSlidingPaneLayout.setSliderFadeColor(ContextCompat.getColor(this, R.color.translucent));
 
         transFragment(R.id.menus, new MainMenuFragment());
+        transFragment(R.id.content, new FreshNewsFragment());
     }
 
     @Override
@@ -80,7 +77,7 @@ public class MainActivity extends BaseActivity {
     }
 
     public void setCurrentFragment(MenuItem.FragmentType type){
-        mViewPager.setCurrentItem(type.ordinal());
+        //mViewPager.setCurrentItem(type.ordinal());
     }
 
     private static class ColorPagerAdapter extends PagerAdapter {

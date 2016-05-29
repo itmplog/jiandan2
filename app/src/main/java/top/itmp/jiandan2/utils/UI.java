@@ -1,8 +1,12 @@
 package top.itmp.jiandan2.utils;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.widget.Toast;
 
 import java.lang.reflect.Field;
+
+import top.itmp.jiandan2.base.TopApplication;
 
 /**
  * Created by hz on 2016/4/27.
@@ -29,4 +33,13 @@ public class UI {
         return statusBarHeight;
 
     }
+
+    public static void ShortToast(@NonNull CharSequence sequence) {
+        Toast.makeText(TopApplication.getContext(), sequence, Toast.LENGTH_SHORT).show();
+    }
+
+    public static void LongToast(@NonNull CharSequence sequence) {
+        Toast.makeText(TopApplication.getContext(), sequence, Toast.LENGTH_SHORT).show();
+    }
+
 }

@@ -106,7 +106,8 @@ public class MainMenuFragment extends BaseFragment {
                         if (currentFragment != menuItem.getType()) {
                             Fragment fragment = (Fragment) Class.forName(menuItem.getFragment()
                                     .getName()).newInstance();
-                            mMainActivity.setCurrentFragment(menuItem.getType());
+                            //mMainActivity.setCurrentFragment(menuItem.getType());
+                            mMainActivity.transFragment(R.id.content, fragment);
                             currentFragment = menuItem.getType();
                         }
                     } catch (ClassNotFoundException e) {
@@ -127,17 +128,18 @@ public class MainMenuFragment extends BaseFragment {
         }
     }
 
-    private class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
+        @BindView(R.id.img_menu)
         ImageView mImageView;
+        @BindView(R.id.tv_title)
         TextView mTextView;
+        @BindView(R.id.rl_container)
         RelativeLayout mRelativeLayout;
 
         public ViewHolder(View view) {
             super(view);
-            mImageView = (ImageView)view.findViewById(R.id.img_menu);
-            mTextView = (TextView)view.findViewById(R.id.tv_title);
-            mRelativeLayout = (RelativeLayout)view.findViewById(R.id.rl_container);
+            ButterKnife.bind(this, view);
         }
     }
 

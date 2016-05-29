@@ -27,7 +27,7 @@ public class TopApplication extends Application {
 
     @Override
     public void onCreate() {
-        StrictModeUtil.init(); //StrictMode 线程监控， VM监控
+        //StrictModeUtil.init(); //StrictMode 线程监控， VM监控
         super.onCreate();
 
         mContext = this;

@@ -34,17 +34,21 @@
             android:layout_height="match_parent"/>
     </LinearLayout>
 
-    <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <!--<android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--<android.support.v4.view.PagerTitleStrip
+        <android.support.v4.view.PagerTitleStrip
             android:id="@+id/titles"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="bottom"
-            android:background="?attr/colorPrimary" />-->
+            android:background="?attr/colorPrimary" />
 
-    </android.support.v4.view.ViewPager>
+    </android.support.v4.view.ViewPager>-->
 </top.itmp.jiandan2.views.PagerEnabledSlidingPaneLayout>
