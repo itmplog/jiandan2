@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import top.itmp.jiandan2.R;
 
 /**
@@ -15,6 +17,7 @@ import top.itmp.jiandan2.R;
  */
 public class FullscreenActivity extends AppCompatActivity {
 
+    @BindView(R.id.fullscreen_content)
     private View mContentView;
 
     @Override
@@ -23,8 +26,9 @@ public class FullscreenActivity extends AppCompatActivity {
 
         View view = getLayoutInflater().inflate(R.layout.activity_fullscreen, null);
         setContentView(view);
+        ButterKnife.bind(this, view);
 
-        mContentView = findViewById(R.id.fullscreen_content);
+        //mContentView = findViewById(R.id.fullscreen_content);
 
 
         mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
