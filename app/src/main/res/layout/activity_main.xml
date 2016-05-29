@@ -8,22 +8,30 @@
     <!-- android:clipToPadding="true"
     android:fitsSystemWindows="true" -->
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="240dp"
         android:layout_height="match_parent"
-        android:layout_marginRight="74dp"
+        android:background="@color/colorPrimary"
         android:orientation="vertical">
 
-        <View
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="74dp"
             android:layout_gravity="bottom"
-            android:background="@color/colorPrimary" />
-
-        <ListView
-            android:id="@+id/left_pane"
+            android:gravity="bottom"
+            android:layout_marginLeft="16dp"
+            android:textColor="@android:color/white"
+            android:textSize="24dp"
+            android:text="@string/app_name"/>
+        <!--<View
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#eeeeeeee" />
+            android:layout_height="74dp"
+            android:layout_gravity="bottom"
+            android:background="@color/colorPrimary" />-->
+
+        <FrameLayout
+            android:id="@+id/menus"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     </LinearLayout>
 
     <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
@@ -31,12 +39,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v4.view.PagerTitleStrip
+        <!--<android.support.v4.view.PagerTitleStrip
             android:id="@+id/titles"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="bottom"
-            android:background="?attr/colorPrimary" />
+            android:background="?attr/colorPrimary" />-->
 
     </android.support.v4.view.ViewPager>
 </top.itmp.jiandan2.views.PagerEnabledSlidingPaneLayout>

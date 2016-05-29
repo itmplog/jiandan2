@@ -1,7 +1,7 @@
 package top.itmp.jiandan2.ui;
 
-import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.PagerTitleStrip;
@@ -10,10 +10,6 @@ import android.util.Pair;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -22,19 +18,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import top.itmp.jiandan2.R;
 import top.itmp.jiandan2.base.BaseActivity;
-import top.itmp.jiandan2.utils.Dummy;
+import top.itmp.jiandan2.model.MenuItem;
+import top.itmp.jiandan2.ui.fragment.MainMenuFragment;
 import top.itmp.jiandan2.views.PagerEnabledSlidingPaneLayout;
 
 public class MainActivity extends BaseActivity {
 
     @BindView(R.id.sliding_pane_layout)
     PagerEnabledSlidingPaneLayout mPagerEnabledSlidingPaneLayout;
-    @BindView(R.id.left_pane)
-    ListView mListView;
     @BindView(R.id.pager)
     ViewPager mViewPager;
-    @BindView(R.id.titles)
-    PagerTitleStrip mPagerTitleStrip;
 
     private long exitTime;
 
@@ -45,24 +38,6 @@ public class MainActivity extends BaseActivity {
         initView();
         initData();
 
-        mListView.setAdapter(new SimpleAdapter(this, Dummy.dummyListMap("dummy"), android.R.layout.simple_list_item_1,
-                new String[]{"dummy"}, new int[]{android.R.id.text1}));
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), ((TextView) view).getText(), Toast.LENGTH_SHORT)
-                        .show();
-            }
-        });
-
-        ColorPagerAdapter colorPagerAdapter = new ColorPagerAdapter();
-        colorPagerAdapter.add("Red", Color.RED);
-        colorPagerAdapter.add("Green", Color.GREEN);
-        colorPagerAdapter.add("Blue", Color.BLUE);
-        colorPagerAdapter.add("Yellow", Color.YELLOW);
-        colorPagerAdapter.add("Cyan", Color.CYAN);
-        colorPagerAdapter.add("Magenta", Color.MAGENTA);
-        mViewPager.setAdapter(colorPagerAdapter);
     }
 
     @Override
@@ -76,6 +51,8 @@ public class MainActivity extends BaseActivity {
         //mPagerTitleStrip = (PagerTitleStrip) findViewById(R.id.titles);
 
         mPagerEnabledSlidingPaneLayout.setSliderFadeColor(ContextCompat.getColor(this, R.color.translucent));
+
+        transFragment(R.id.menus, new MainMenuFragment());
     }
 
     @Override
@@ -96,6 +73,14 @@ public class MainActivity extends BaseActivity {
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    public void closeSlidingPaneLayout(){
+        mPagerEnabledSlidingPaneLayout.closePane();
+    }
+
+    public void setCurrentFragment(MenuItem.FragmentType type){
+        mViewPager.setCurrentItem(type.ordinal());
     }
 
     private static class ColorPagerAdapter extends PagerAdapter {
@@ -153,4 +138,6 @@ public class MainActivity extends BaseActivity {
             }
         }
     }
+
+
 }
