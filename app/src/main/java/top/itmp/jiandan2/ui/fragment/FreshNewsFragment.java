@@ -16,6 +16,7 @@ import butterknife.ButterKnife;
 import top.itmp.jiandan2.R;
 import top.itmp.jiandan2.adapter.FreshNewsAdapter;
 import top.itmp.jiandan2.base.BaseFragment;
+import top.itmp.jiandan2.utils.UI;
 
 /**
  * Created by hz on 2016/5/29.
@@ -47,6 +48,8 @@ public class FreshNewsFragment extends BaseFragment {
 
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
         isLargeMode = sp.getBoolean("enable_big", true);
+
+        mSwipeRefreshLayout.setPadding(0, UI.getStatusBarHeight(getContext()), 0, UI.getNavigationHeight(getContext()));
         return rootView;
     }
 
