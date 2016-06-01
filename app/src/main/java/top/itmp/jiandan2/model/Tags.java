@@ -14,14 +14,14 @@ public class Tags implements Serializable {
     private String title;
     private String description;
 
-    public static Tags parse(final JSONArray jsonArray){
+    public static Tags parse(final JSONArray jsonArray) {
         Tags tags;
-        if(jsonArray == null){
+        if (jsonArray == null) {
             tags = null;
-        }else{
+        } else {
             tags = new Tags();
             JSONObject jsonObject = jsonArray.optJSONObject(0);
-            if(jsonObject != null){
+            if (jsonObject != null) {
                 tags.id = jsonObject.optInt("id");
                 tags.title = jsonObject.optString("title");
                 tags.description = jsonObject.optString("description");
@@ -30,11 +30,11 @@ public class Tags implements Serializable {
         return tags;
     }
 
-    public static Tags parseCache(final JSONObject jsonObject){
+    public static Tags parseCache(final JSONObject jsonObject) {
         Tags tags;
-        if(jsonObject == null){
+        if (jsonObject == null) {
             tags = null;
-        }else{
+        } else {
             tags = new Tags();
             tags.id = jsonObject.optInt("int");
             tags.title = jsonObject.optString("title");
@@ -43,27 +43,27 @@ public class Tags implements Serializable {
         return tags;
     }
 
-    public int getId(){
+    public int getId() {
         return id;
     }
 
-    public void setId(int id){
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title){
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description){
+    public void setDescription(String description) {
         this.description = description;
     }
 }

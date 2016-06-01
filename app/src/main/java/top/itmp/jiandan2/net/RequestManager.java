@@ -16,11 +16,11 @@ public class RequestManager {
 
     public static RequestQueue mRequestQueue = TopApplication.getRequestQueue();
 
-    private RequestManager(){
+    private RequestManager() {
     }
 
-    public static void addRequest(Request<?> request, Object tag){
-        if(tag != null){
+    public static void addRequest(Request<?> request, Object tag) {
+        if (tag != null) {
             request.setTag(tag);
         }
 
@@ -33,7 +33,7 @@ public class RequestManager {
         mRequestQueue.add(request);
     }
 
-    public static void cancelAll(Object tag){
+    public static void cancelAll(Object tag) {
         mRequestQueue.cancelAll(tag);
     }
 }

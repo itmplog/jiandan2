@@ -12,7 +12,6 @@ import top.itmp.greendao.DaoMaster;
 import top.itmp.greendao.DaoSession;
 import top.itmp.jiandan2.cache.BaseCache;
 import top.itmp.jiandan2.utils.ImageLoadProxy;
-import top.itmp.jiandan2.utils.StrictModeUtil;
 
 /**
  * Created by hz on 2016/4/5.
@@ -36,7 +35,7 @@ public class TopApplication extends Application {
         mRefWatcher = LeakCanary.install(this);
     }
 
-    public static Context getContext(){
+    public static Context getContext() {
         return mContext;
     }
 
@@ -45,17 +44,17 @@ public class TopApplication extends Application {
         return application.mRefWatcher;
     }
 
-    public static DaoMaster getDaoMaster(){
-        if(mDaoMaster == null){
+    public static DaoMaster getDaoMaster() {
+        if (mDaoMaster == null) {
             DaoMaster.OpenHelper helper = new DaoMaster.DevOpenHelper(mContext, BaseCache.DB_NAME, null);
             mDaoMaster = new DaoMaster(helper.getWritableDatabase());
         }
         return mDaoMaster;
     }
 
-    public static DaoSession getDaoSession(){
-        if(mDaoSession == null){
-            if(mDaoMaster == null){
+    public static DaoSession getDaoSession() {
+        if (mDaoSession == null) {
+            if (mDaoMaster == null) {
                 mDaoMaster = getDaoMaster();
             }
             mDaoSession = mDaoMaster.newSession();
@@ -63,8 +62,8 @@ public class TopApplication extends Application {
         return mDaoSession;
     }
 
-    public static RequestQueue getRequestQueue(){
-        if(mRequestQueue == null){
+    public static RequestQueue getRequestQueue() {
+        if (mRequestQueue == null) {
             mRequestQueue = Volley.newRequestQueue(mContext);
         }
         return mRequestQueue;

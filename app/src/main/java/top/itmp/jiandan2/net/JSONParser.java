@@ -34,7 +34,7 @@ public class JSONParser {
             return gson.fromJson(jsonString, (Type) type);
         } else if (type instanceof Class<?>) {
             return gson.fromJson(jsonString, (Class<?>) type);
-        }else{
+        } else {
             throw new RuntimeException("只能是Class<?>或者通过TypeToken获取的Type类型");
         }
     }

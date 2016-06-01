@@ -18,9 +18,9 @@ public class Author implements Serializable {
     public String url;
     public String description;
 
-    public static Author parse(final JSONObject jsonObject){
+    public static Author parse(final JSONObject jsonObject) {
         Author author;
-        if(jsonObject == null){
+        if (jsonObject == null) {
             author = null;
         } else {
             author = new Author();
@@ -36,35 +36,35 @@ public class Author implements Serializable {
         return author;
     }
 
-    public String getId(){
+    public String getId() {
         return id;
     }
 
-    public void setId(String id){
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getUrl(){
+    public String getUrl() {
         return url;
     }
 
-    public void setUrl(String url){
+    public void setUrl(String url) {
         this.url = url;
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description){
+    public void setDescription(String description) {
         this.description = description;
     }
 

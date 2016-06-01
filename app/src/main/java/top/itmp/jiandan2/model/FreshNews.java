@@ -27,21 +27,21 @@ public class FreshNews implements Serializable {
 
     private Tags tags;
 
-    public FreshNews(){
+    public FreshNews() {
     }
 
-    public static String getUrlFreshNews(int page){
+    public static String getUrlFreshNews(int page) {
         return URL_FRESH_NEWS + page;
     }
 
-    public static String getUrlFreshNewsDetail(String id){
+    public static String getUrlFreshNewsDetail(String id) {
         return URL_FRESH_NEWS_DETAIL + id;
     }
 
-    public static ArrayList<FreshNews> parse(JSONArray postsArray){
+    public static ArrayList<FreshNews> parse(JSONArray postsArray) {
         ArrayList<FreshNews> freshNewses = new ArrayList<>();
 
-        for(int i = 0; i < postsArray.length(); i++){
+        for (int i = 0; i < postsArray.length(); i++) {
             FreshNews freshNews = new FreshNews();
             JSONObject jsonObject = postsArray.optJSONObject(i);
 
@@ -59,10 +59,10 @@ public class FreshNews implements Serializable {
         return freshNewses;
     }
 
-    public static ArrayList<FreshNews> parseCache(JSONArray postsArray){
+    public static ArrayList<FreshNews> parseCache(JSONArray postsArray) {
         ArrayList<FreshNews> freshNewses = new ArrayList<>();
 
-        for(int i = 0; i < postsArray.length(); i++){
+        for (int i = 0; i < postsArray.length(); i++) {
             FreshNews freshNews = new FreshNews();
             JSONObject jsonObject = postsArray.optJSONObject(i);
 
@@ -95,75 +95,75 @@ public class FreshNews implements Serializable {
                 '}';
     }
 
-    public String getId(){
+    public String getId() {
         return id;
     }
 
-    public void setId(String id){
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title){
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public String getUrl(){
+    public String getUrl() {
         return url;
     }
 
-    public void setUrl(String url){
+    public void setUrl(String url) {
         this.url = url;
     }
 
-    public String getDate(){
+    public String getDate() {
         return date;
     }
 
-    public void setDate(String date){
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public String getThumb_c(){
+    public String getThumb_c() {
         return thumb_c;
     }
 
-    public void setThumb_c(String thumb_c){
+    public void setThumb_c(String thumb_c) {
         this.thumb_c = thumb_c;
     }
 
-    public String getComment_count(){
+    public String getComment_count() {
         return comment_count;
     }
 
-    public void setComment_count(String comment_count){
+    public void setComment_count(String comment_count) {
         this.comment_count = comment_count;
     }
 
-    public Author getAuthor(){
+    public Author getAuthor() {
         return author;
     }
 
-    public void setAuthor(Author author){
+    public void setAuthor(Author author) {
         this.author = author;
     }
 
-    public CustomFields getCustomFields(){
+    public CustomFields getCustomFields() {
         return custom_fields;
     }
 
-    public void setCustomFields(CustomFields custom_fields){
+    public void setCustomFields(CustomFields custom_fields) {
         this.custom_fields = custom_fields;
     }
 
-    public Tags getTags(){
+    public Tags getTags() {
         return tags;
     }
 
-    public void setTags(Tags tags){
+    public void setTags(Tags tags) {
         this.tags = tags;
     }
 

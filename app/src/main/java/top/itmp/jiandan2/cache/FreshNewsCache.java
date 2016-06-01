@@ -17,13 +17,13 @@ public class FreshNewsCache extends BaseCache {
     private static FreshNewsCache instance;
     private static FreshNewsCacheDao mFreshNewsCacheDao;
 
-    private FreshNewsCache(){
+    private FreshNewsCache() {
     }
 
-    public static FreshNewsCache getInstance(){
-        if(instance == null){
-            synchronized (FreshNewsCache.class){
-                if(instance == null){
+    public static FreshNewsCache getInstance() {
+        if (instance == null) {
+            synchronized (FreshNewsCache.class) {
+                if (instance == null) {
                     instance = new FreshNewsCache();
                 }
             }
@@ -33,24 +33,24 @@ public class FreshNewsCache extends BaseCache {
         return instance;
     }
 
-    public void clearAllCache(){
+    public void clearAllCache() {
         mFreshNewsCacheDao.deleteAll();
     }
 
     @Override
     public ArrayList getCacheByPage(int page) {
         QueryBuilder<top.itmp.greendao.FreshNewsCache> query = mFreshNewsCacheDao.queryBuilder().where(FreshNewsCacheDao
-        .Properties.Page.eq("" +  page));
+                .Properties.Page.eq("" + page));
 
-        if(query.list().size() > 0){
+        if (query.list().size() > 0) {
             try {
                 return FreshNews.parseCache(new JSONArray(query.list().get(0)
                         .getResult()));
-            } catch (JSONException e){
+            } catch (JSONException e) {
                 e.printStackTrace();
                 return new ArrayList<>();
             }
-        }else{
+        } else {
             return new ArrayList<>();
         }
     }

@@ -48,7 +48,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         RequestManager.cancelAll(this);
     }
 
-    public void executeRequest(Request<?> request){
+    public void executeRequest(Request<?> request) {
         RequestManager.addRequest(request, this);
     }
 }

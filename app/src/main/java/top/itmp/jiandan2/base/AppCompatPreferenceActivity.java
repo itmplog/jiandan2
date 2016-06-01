@@ -30,7 +30,7 @@ import android.view.ViewGroup;
 /**
  * A {@link PreferenceActivity} which implements and proxies the necessary calls
  * to be used with AppCompat.
- * <p/>
+ * <p>
  * This technique can be used with an {@link android.app.Activity} class, not just
  * {@link PreferenceActivity}.
  */

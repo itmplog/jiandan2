@@ -1,4 +1,5 @@
 package top.itmp.jiandan2.base;
+
 import android.support.v4.app.Fragment;
 
 import com.android.volley.Request;
@@ -16,7 +17,7 @@ public class BaseFragment extends Fragment {
         TopApplication.getRefWatcher(getActivity()).watch(this);
     }
 
-    public void executeRequest(Request request){
+    public void executeRequest(Request request) {
         RequestManager.addRequest(request, this);
     }
 }

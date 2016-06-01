@@ -24,17 +24,17 @@ public class ImageLoadProxy {
 
     private static ImageLoader imageLoader;
 
-    public static ImageLoader getImageLoader(){
-        if(imageLoader == null){
-            synchronized (ImageLoadProxy.class){
-                if(imageLoader == null)
+    public static ImageLoader getImageLoader() {
+        if (imageLoader == null) {
+            synchronized (ImageLoadProxy.class) {
+                if (imageLoader == null)
                     imageLoader = ImageLoader.getInstance();
             }
         }
         return imageLoader;
     }
 
-    public static void initImageLoader(Context context){
+    public static void initImageLoader(Context context) {
         ImageLoaderConfiguration.Builder builder = new ImageLoaderConfiguration.Builder(context);
         builder.tasksProcessingOrder(QueueProcessingType.LIFO);
         builder.diskCacheSize(MAX_DISK_CACHE);
@@ -44,31 +44,31 @@ public class ImageLoadProxy {
         getImageLoader().init(builder.build());
     }
 
-    public static void displayImage(String url, ImageView imageView, DisplayImageOptions options){
+    public static void displayImage(String url, ImageView imageView, DisplayImageOptions options) {
         imageLoader.displayImage(url, imageView, options);
     }
 
-    public static void displayHeaderIcon(String url, ImageView imageView){
+    public static void displayHeaderIcon(String url, ImageView imageView) {
         imageLoader.displayImage(url, imageView, getOptionsHeader());
     }
 
-    public static void displayImageDetail(String url, ImageView imageView, SimpleImageLoadingListener loadingListener){
+    public static void displayImageDetail(String url, ImageView imageView, SimpleImageLoadingListener loadingListener) {
         imageLoader.displayImage(url, imageView, getOptionsExactlyType(), loadingListener);
     }
 
-    public static void displayImageList(String url, ImageView imageView, int loadingResource, SimpleImageLoadingListener loadingListener, ImageLoadingProgressListener progressListener){
+    public static void displayImageList(String url, ImageView imageView, int loadingResource, SimpleImageLoadingListener loadingListener, ImageLoadingProgressListener progressListener) {
         imageLoader.displayImage(url, imageView, getOptionsPictureList(loadingResource), loadingListener, progressListener);
     }
 
-    public static void displayImageWithLoadingPicture(String url, ImageView imageView, int loadingResource){
+    public static void displayImageWithLoadingPicture(String url, ImageView imageView, int loadingResource) {
         imageLoader.displayImage(url, imageView, getOptionsPictureList(loadingResource));
     }
 
-    public static void loadImageFromLocalCache(String url, SimpleImageLoadingListener loadingListener){
+    public static void loadImageFromLocalCache(String url, SimpleImageLoadingListener loadingListener) {
         imageLoader.loadImage(url, getOptionsExactlyType(), loadingListener);
     }
 
-    public static DisplayImageOptions getOptionsExactlyType(){
+    public static DisplayImageOptions getOptionsExactlyType() {
         return new DisplayImageOptions.Builder()
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
@@ -79,7 +79,7 @@ public class ImageLoadProxy {
                 .build();
     }
 
-    public static DisplayImageOptions getOptionsHeader(){
+    public static DisplayImageOptions getOptionsHeader() {
         return new DisplayImageOptions.Builder()
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
@@ -90,7 +90,7 @@ public class ImageLoadProxy {
                 .build();
     }
 
-    public static DisplayImageOptions getOptionsPictureList(int loadingResource){
+    public static DisplayImageOptions getOptionsPictureList(int loadingResource) {
         return new DisplayImageOptions.Builder()
                 .cacheInMemory(true)
                 .cacheOnDisk(true)

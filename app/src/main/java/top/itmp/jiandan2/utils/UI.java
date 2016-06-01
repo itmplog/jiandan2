@@ -36,15 +36,15 @@ public class UI {
 
     }
 
-    public static int getStatusBarHeight(Resources resources){
+    public static int getStatusBarHeight(Resources resources) {
         int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
-        if(resourceId > 0){
+        if (resourceId > 0) {
             return resources.getDimensionPixelSize(resourceId);
         }
         return 0;
     }
 
-    public static int getNavigationHeight(Context context){
+    public static int getNavigationHeight(Context context) {
         Resources resources = context.getResources();
         int resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
         if (resourceId > 0) {
@@ -53,7 +53,7 @@ public class UI {
         return 0;
     }
 
-    public static int getNavigationHeight(Context context, int orientation){
+    public static int getNavigationHeight(Context context, int orientation) {
         Resources resources = context.getResources();
 
         int id = resources.getIdentifier(

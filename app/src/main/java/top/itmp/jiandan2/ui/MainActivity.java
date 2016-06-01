@@ -78,11 +78,11 @@ public class MainActivity extends BaseActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    public void closeSlidingPaneLayout(){
+    public void closeSlidingPaneLayout() {
         mPagerEnabledSlidingPaneLayout.closePane();
     }
 
-    public void setCurrentFragment(MenuItem.FragmentType type){
+    public void setCurrentFragment(MenuItem.FragmentType type) {
         //mViewPager.setCurrentItem(type.ordinal());
     }
 

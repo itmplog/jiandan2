@@ -151,7 +151,7 @@ public class MainMenuFragment extends BaseFragment {
         if (sp.getBoolean("enable_sister", false) && mMenuAdapter.mMenuItems.size() == 4) {
             addAllMenuItems(mMenuAdapter);
             mMenuAdapter.notifyDataSetChanged();
-        }else if(!sp.getBoolean("enable_sister", false) && mMenuAdapter.mMenuItems.size() == 5){
+        } else if (!sp.getBoolean("enable_sister", false) && mMenuAdapter.mMenuItems.size() == 5) {
             addMenuItemsNoSister(mMenuAdapter);
             mMenuAdapter.notifyDataSetChanged();
         }

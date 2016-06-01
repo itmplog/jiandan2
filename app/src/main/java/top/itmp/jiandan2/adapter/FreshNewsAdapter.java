@@ -24,6 +24,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import top.itmp.jiandan2.R;
 import top.itmp.jiandan2.cache.FreshNewsCache;
+import top.itmp.jiandan2.callback.LoadCompleteCallBack;
+import top.itmp.jiandan2.callback.LoadResultCallBack;
 import top.itmp.jiandan2.model.FreshNews;
 import top.itmp.jiandan2.net.JSONParser;
 import top.itmp.jiandan2.net.Request4FreshNews;
@@ -31,6 +33,7 @@ import top.itmp.jiandan2.net.RequestManager;
 import top.itmp.jiandan2.ui.FreshNewsDetailActivity;
 import top.itmp.jiandan2.utils.ImageLoadProxy;
 import top.itmp.jiandan2.utils.NetworkUtils;
+import top.itmp.jiandan2.utils.ShareUtils;
 import top.itmp.jiandan2.utils.String2TimeUtils;
 import top.itmp.jiandan2.utils.UI;
 
@@ -45,9 +48,16 @@ public class FreshNewsAdapter extends RecyclerView.Adapter<FreshNewsAdapter.View
     private DisplayImageOptions mOptions;
     private ArrayList<FreshNews> mFreshNews;
 
-    public FreshNewsAdapter(Activity activity, boolean isLargeMode){
+    private LoadCompleteCallBack loadCompleteCallBack;
+    private LoadResultCallBack loadResultCallBack;
+
+    public FreshNewsAdapter(Activity activity, LoadCompleteCallBack loadCompleteCallBack,
+                            LoadResultCallBack loadResultCallBack, boolean isLargeMode) {
         this.mActivity = activity;
         this.isLargeMode = isLargeMode;
+
+        this.loadCompleteCallBack = loadCompleteCallBack;
+        this.loadResultCallBack = loadResultCallBack;
 
         mFreshNews = new ArrayList<>();
 
@@ -55,7 +65,7 @@ public class FreshNewsAdapter extends RecyclerView.Adapter<FreshNewsAdapter.View
         mOptions = ImageLoadProxy.getOptionsPictureList(loadingResource);
     }
 
-    private void setAnimation(View view, int position){
+    private void setAnimation(View view, int position) {
         Animation animation = AnimationUtils.loadAnimation(view.getContext(), R
                 .anim.item_bottom_in);
         view.startAnimation(animation);
@@ -97,7 +107,7 @@ public class FreshNewsAdapter extends RecyclerView.Adapter<FreshNewsAdapter.View
             holder.tv_share.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //ShareUtil.shareText(mActivity, freshNews.getTitle() + " " + freshNews.getUrl());
+                    ShareUtils.shareText(mActivity, freshNews.getTitle() + " " + freshNews.getUrl());
                 }
             });
 
@@ -151,8 +161,8 @@ public class FreshNewsAdapter extends RecyclerView.Adapter<FreshNewsAdapter.View
                         @Override
                         public void onResponse(ArrayList<FreshNews> response) {
 
-                            //mLoadResultCallBack.onSuccess(LoadResultCallBack.SUCCESS_OK, null);
-                            //mLoadFinisCallBack.loadFinish(null);
+                            loadResultCallBack.onSuccess(LoadResultCallBack.SUCCESS, null);
+                            loadCompleteCallBack.loadComplete(null);
 
                             if (page == 1) {
                                 mFreshNews.clear();
@@ -171,6 +181,8 @@ public class FreshNewsAdapter extends RecyclerView.Adapter<FreshNewsAdapter.View
                 public void onErrorResponse(VolleyError error) {
                     //mLoadResultCallBack.onError(LoadResultCallBack.ERROR_NET, error.getMessage());
                     //mLoadFinisCallBack.loadFinish(null);
+                    loadResultCallBack.onError(LoadResultCallBack.ERROR, error.getMessage());
+                    loadCompleteCallBack.loadComplete(null);
                 }
             }), mActivity);
         } else {

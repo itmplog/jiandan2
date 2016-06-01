@@ -20,19 +20,19 @@ public class Request4FreshNews extends Request<ArrayList<FreshNews>> {
     private Response.Listener<ArrayList<FreshNews>> listener;
 
     public Request4FreshNews(String url, Response.Listener<ArrayList<FreshNews>> listener,
-                             Response.ErrorListener errorListener){
+                             Response.ErrorListener errorListener) {
         super(Method.GET, url, errorListener);
         this.listener = listener;
     }
 
     @Override
     protected Response<ArrayList<FreshNews>> parseNetworkResponse(NetworkResponse response) {
-        try{
+        try {
             String result = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
             JSONObject resultObject = new JSONObject(result);
             JSONArray resultArray = resultObject.optJSONArray("posts");
             return Response.success(FreshNews.parse(resultArray), HttpHeaderParser.parseCacheHeaders(response));
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return Response.error(new ParseError(e));
         }
