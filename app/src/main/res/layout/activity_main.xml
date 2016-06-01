@@ -4,10 +4,11 @@
     android:id="@+id/sliding_pane_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
-    <!-- android:clipToPadding="true"
-    android:fitsSystemWindows="true" -->
+    tools:context=".ui.MainActivity"
+    android:clipToPadding="true">
+    <!-- android:fitsSystemWindows="true"-->
     <LinearLayout
+        android:id="@+id/left"
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary"
@@ -15,7 +16,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="74dp"
+            android:layout_height="50dp"
             android:layout_gravity="bottom"
             android:gravity="bottom"
             android:layout_marginLeft="16dp"

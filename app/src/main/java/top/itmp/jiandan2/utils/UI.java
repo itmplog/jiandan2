@@ -1,6 +1,8 @@
 package top.itmp.jiandan2.utils;
 
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.widget.Toast;
 
@@ -32,6 +34,35 @@ public class UI {
 
         return statusBarHeight;
 
+    }
+
+    public static int getStatusBarHeight(Resources resources){
+        int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
+        if(resourceId > 0){
+            return resources.getDimensionPixelSize(resourceId);
+        }
+        return 0;
+    }
+
+    public static int getNavigationHeight(Context context){
+        Resources resources = context.getResources();
+        int resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            return resources.getDimensionPixelSize(resourceId);
+        }
+        return 0;
+    }
+
+    public static int getNavigationHeight(Context context, int orientation){
+        Resources resources = context.getResources();
+
+        int id = resources.getIdentifier(
+                orientation == Configuration.ORIENTATION_PORTRAIT ? "navigation_bar_height" : "navigation_bar_height_landscape",
+                "dimen", "android");
+        if (id > 0) {
+            return resources.getDimensionPixelSize(id);
+        }
+        return 0;
     }
 
     public static void ShortToast(@NonNull CharSequence sequence) {

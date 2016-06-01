@@ -7,6 +7,7 @@ import android.util.Pair;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -18,12 +19,15 @@ import top.itmp.jiandan2.base.BaseActivity;
 import top.itmp.jiandan2.model.MenuItem;
 import top.itmp.jiandan2.ui.fragment.FreshNewsFragment;
 import top.itmp.jiandan2.ui.fragment.MainMenuFragment;
+import top.itmp.jiandan2.utils.UI;
 import top.itmp.jiandan2.views.PagerEnabledSlidingPaneLayout;
 
 public class MainActivity extends BaseActivity {
 
     @BindView(R.id.sliding_pane_layout)
     PagerEnabledSlidingPaneLayout mPagerEnabledSlidingPaneLayout;
+    @BindView(R.id.left)
+    LinearLayout left;
 
     private long exitTime;
 
@@ -45,6 +49,8 @@ public class MainActivity extends BaseActivity {
         //mFrameLayout = (FrameLayout)findViewById(R.id.context);
         //mViewPager = (ViewPager) findViewById(R.id.pager);
         //mPagerTitleStrip = (PagerTitleStrip) findViewById(R.id.titles);
+
+        left.setPadding(8, UI.getStatusBarHeight(this.getResources()), 0, UI.getNavigationHeight(this));
 
         mPagerEnabledSlidingPaneLayout.setSliderFadeColor(ContextCompat.getColor(this, R.color.translucent));
 
