@@ -57,7 +57,7 @@ public class FreshNewsFragment extends BaseFragment implements LoadResultCallBac
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
         isLargeMode = sp.getBoolean("enable_big", true);
 
-        mSwipeRefreshLayout.setPadding(0, UI.getStatusBarHeight(getContext()), 0, UI.getNavigationHeight(getContext()));
+        mSwipeRefreshLayout.setPadding(0, UI.getStatusBarHeight(getContext()), 0, 0);
         return rootView;
     }
 

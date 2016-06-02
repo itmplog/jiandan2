@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <style name="AppTheme" parent="BaseTheme">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>、
+        <item name="android:windowTranslucentNavigation">true</item>
+
+
+        <!--
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/translucent</item>
+        -->
+    </style>
+
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="AppTheme.Base">
+    <style name="BaseTheme" parent="AppTheme.Base">
         <item name="actionBarStyle">@style/Appcompat.ActionBarStyle</item>
         <item name="drawerArrowStyle">@style/AppTheme.DrawerArrowStyle</item>
         <!-- Customize your theme here. -->
@@ -20,10 +33,5 @@
         <item name="android:colorAccent">@color/colorAccent</item>
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
 
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <!--<item name="android:windowBackground">@color/translucent</item>-->
     </style>
 </resources>
