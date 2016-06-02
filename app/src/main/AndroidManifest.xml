@@ -31,7 +31,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.FreshNewsDetailActivity"
-                  android:theme="@style/AppTheme">
+                  android:theme="@style/BaseTheme"
+                  android:parentActivityName=".ui.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.MainActivity" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
