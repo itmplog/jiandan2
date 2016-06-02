@@ -2,6 +2,8 @@ package top.itmp.jiandan2.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -63,12 +65,18 @@ public class FreshNewsAdapter extends RecyclerView.Adapter<FreshNewsAdapter.View
 
         int loadingResource = isLargeMode ? R.drawable.ic_loading_large : R.drawable.ic_loading_small;
         mOptions = ImageLoadProxy.getOptionsPictureList(loadingResource);
+
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(activity);
+        lastPosition = sp.getInt("lastPosition", -1);
     }
 
     private void setAnimation(View view, int position) {
-        Animation animation = AnimationUtils.loadAnimation(view.getContext(), R
-                .anim.item_bottom_in);
-        view.startAnimation(animation);
+        if(position > lastPosition) {
+            Animation animation = AnimationUtils.loadAnimation(view.getContext(), R
+                    .anim.item_bottom_in);
+            view.startAnimation(animation);
+            lastPosition = position;
+        }
     }
 
     @Override

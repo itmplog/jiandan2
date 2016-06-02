@@ -11,6 +11,6 @@
         android:id="@+id/fragment_setting"
         class="top.itmp.jiandan2.ui.fragment.SettingsFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
