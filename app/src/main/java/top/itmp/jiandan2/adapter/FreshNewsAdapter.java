@@ -3,6 +3,7 @@ package top.itmp.jiandan2.adapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
 import java.util.ArrayList;
 
@@ -38,6 +40,7 @@ import top.itmp.jiandan2.utils.NetworkUtils;
 import top.itmp.jiandan2.utils.ShareUtils;
 import top.itmp.jiandan2.utils.String2TimeUtils;
 import top.itmp.jiandan2.utils.UI;
+import top.itmp.jiandan2.views.loading.LoadingView;
 
 /**
  * Created by hz on 2016/5/29.
@@ -98,10 +101,15 @@ public class FreshNewsAdapter extends RecyclerView.Adapter<FreshNewsAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(FreshNewsAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(final FreshNewsAdapter.ViewHolder holder, final int position) {
         final FreshNews freshNews = mFreshNews.get(position);
 
-        ImageLoadProxy.displayImage(freshNews.getCustomFields().getThumb_m(), holder.img, mOptions);
+        ImageLoadProxy.displayImage(freshNews.getCustomFields().getThumb_m(), holder.img, mOptions, new SimpleImageLoadingListener(){
+            @Override
+            public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+                holder.loading.setVisibility(View.GONE);
+            }
+        });
         holder.tv_title.setText(freshNews.getTitle());
         holder.tv_info.setText(freshNews.getAuthor().getName() + "@" + freshNews.getTags()
                 .getTitle());
@@ -229,6 +237,10 @@ public class FreshNewsAdapter extends RecyclerView.Adapter<FreshNewsAdapter.View
         @Nullable
         @BindView(R.id.ll_content)
         LinearLayout ll_content;
+
+        @Nullable
+        @BindView(R.id.loading)
+        LoadingView loading;
 
         public ViewHolder(View contentView) {
             super(contentView);

@@ -48,6 +48,10 @@ public class ImageLoadProxy {
         imageLoader.displayImage(url, imageView, options);
     }
 
+    public static void displayImage(String url, ImageView imageView, DisplayImageOptions options, SimpleImageLoadingListener listener) {
+        imageLoader.displayImage(url, imageView, options, listener);
+    }
+
     public static void displayHeaderIcon(String url, ImageView imageView) {
         imageLoader.displayImage(url, imageView, getOptionsHeader());
     }
@@ -96,7 +100,7 @@ public class ImageLoadProxy {
                 .cacheOnDisk(true)
                 .bitmapConfig(Bitmap.Config.RGB_565)
                 .resetViewBeforeLoading(true)
-                .showImageOnLoading(loadingResource)
+                //.showImageOnLoading(loadingResource)
                 .showImageForEmptyUri(loadingResource)
                 .showImageOnFail(loadingResource)
                 .build();
