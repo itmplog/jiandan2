@@ -26,7 +26,7 @@ import top.itmp.jiandan2.ui.CommentListActivity;
 import top.itmp.jiandan2.ui.FreshNewsDetailActivity;
 import top.itmp.jiandan2.utils.ShareUtils;
 import top.itmp.jiandan2.utils.String2TimeUtils;
-import top.itmp.jiandan2.views.loading.LoadingView;
+import top.itmp.jiandan2.view.loading.LoadingView;
 
 /**
  * Created by hz on 2016/6/2.

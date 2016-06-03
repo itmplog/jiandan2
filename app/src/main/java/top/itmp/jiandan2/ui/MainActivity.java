@@ -20,7 +20,7 @@ import top.itmp.jiandan2.model.MenuItem;
 import top.itmp.jiandan2.ui.fragment.FreshNewsFragment;
 import top.itmp.jiandan2.ui.fragment.MainMenuFragment;
 import top.itmp.jiandan2.utils.UI;
-import top.itmp.jiandan2.views.PagerEnabledSlidingPaneLayout;
+import top.itmp.jiandan2.view.PagerEnabledSlidingPaneLayout;
 
 public class MainActivity extends BaseActivity {
 

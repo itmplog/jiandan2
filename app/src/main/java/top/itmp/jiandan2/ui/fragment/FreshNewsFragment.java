@@ -21,8 +21,8 @@ import top.itmp.jiandan2.base.BaseFragment;
 import top.itmp.jiandan2.callback.LoadMoreCallBack;
 import top.itmp.jiandan2.callback.LoadResultCallBack;
 import top.itmp.jiandan2.utils.UI;
-import top.itmp.jiandan2.views.NewRecyclerView;
-import top.itmp.jiandan2.views.loading.LoadingView;
+import top.itmp.jiandan2.view.NewRecyclerView;
+import top.itmp.jiandan2.view.loading.LoadingView;
 
 /**
  * Created by hz on 2016/5/29.

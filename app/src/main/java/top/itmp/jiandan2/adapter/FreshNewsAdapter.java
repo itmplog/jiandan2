@@ -40,7 +40,7 @@ import top.itmp.jiandan2.utils.NetworkUtils;
 import top.itmp.jiandan2.utils.ShareUtils;
 import top.itmp.jiandan2.utils.String2TimeUtils;
 import top.itmp.jiandan2.utils.UI;
-import top.itmp.jiandan2.views.loading.LoadingView;
+import top.itmp.jiandan2.view.loading.LoadingView;
 
 /**
  * Created by hz on 2016/5/29.
