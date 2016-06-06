@@ -1,4 +1,4 @@
-package top.itmp.jiandan2.adapter;
+package top.itmp.jiandan2.net;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
